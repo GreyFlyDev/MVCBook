@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+//needed in order to reference Model type "GuestResponse"
+using PartyInvites.Models;
 
 namespace PartyInvites.Controllers
 {
@@ -20,10 +22,21 @@ namespace PartyInvites.Controllers
             return View();
         }
 
+        //HttpGet Only handles Get Requests
+        [HttpGet]
         //Create New RsvpForm (Right Click To Add View)
         public ViewResult RsvpForms()
         {
             return View();
+        }
+
+        //HttpPost Only handles Post Requests
+        [HttpPost]
+        public ViewResult RsvpForms(GuestResponse guestResponse)
+        {
+            //Render "Thanks" View 
+            //& Pass it the "guestResponse" Object
+            return View("Thanks",guestResponse);
         }
     }
 
