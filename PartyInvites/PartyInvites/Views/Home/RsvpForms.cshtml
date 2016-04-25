@@ -14,6 +14,8 @@
 <body>
     @using (Html.BeginForm())
     {
+        //Checks against our validation and adds warnings
+        @Html.ValidationSummary();
         //Lambdas used to reduce misspelling(Look into Lambdas)
         <p>Name: @Html.TextBoxFor(x => x.Name)</p>
         <p>Email: @Html.TextBoxFor(x => x.Email)</p>
