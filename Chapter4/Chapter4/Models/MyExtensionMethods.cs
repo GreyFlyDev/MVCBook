@@ -35,5 +35,19 @@ namespace Chapter4.Models
                 }
             }
         }
+
+        public static IEnumerable<Product> Filter(
+                                                    //bool checks against selectorParam to all Enums
+                                                    //Returns the trues
+            this IEnumerable<Product> productEnum, Func<Product, bool> selectorParam)
+        {
+            foreach(Product prod in productEnum)
+            {
+                if (selectorParam(prod))
+                {
+                    yield return prod;
+                }
+            }
+        }
     }
 }
