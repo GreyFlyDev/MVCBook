@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 //Add refernce to object
 using Chapter4.Models;
+//needed for StringBuilder
+using System.Text;
 
 namespace Chapter4.Controllers
 {
@@ -134,6 +136,24 @@ namespace Chapter4.Controllers
             }
 
             return View("Result", (object)String.Format("Total: {0}", total));
+        }
+
+        public ViewResult CreateAnonArray()
+        {
+            var oddsAndEnds = new[]
+            {
+                new {Name = "MVC", Category = "Pattern"},
+                new {Name = "Hat", Category = "Clothing"},
+                new {Name = "Apple", Category = "Fruit"}
+            };
+
+            StringBuilder result = new StringBuilder();
+            foreach(var item in oddsAndEnds)
+            {
+                result.Append(item.Name).Append(" ");
+            }
+
+            return View("Result", (object)result.ToString());
         }
     }
 }
