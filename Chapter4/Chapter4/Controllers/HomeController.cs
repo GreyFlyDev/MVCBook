@@ -32,7 +32,7 @@ namespace Chapter4.Controllers
 
         }
 
-        public ActionResult CreateProduct()
+        public ViewResult CreateProduct()
         {
             //Fast Way
             Product myProduct = new Product
@@ -45,6 +45,23 @@ namespace Chapter4.Controllers
             };
 
             return View("Result", (object)String.Format("Category: {0}", myProduct.Category));
+        }
+
+        public ViewResult CreateCollection()
+        {
+            string[] stringArray = { "apple", "orange", "plum" };
+
+            List<int> intList = new List<int>
+            {
+                10,20,30,40
+            };
+
+            Dictionary<string, int> myDict = new Dictionary<string, int>
+            {
+                {"apple", 10 }, {"orange", 20 }, {"plum", 30 }
+            };
+
+            return View("Result", (object)stringArray[1]);
         }
     }
 }
