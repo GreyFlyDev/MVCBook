@@ -126,14 +126,9 @@ namespace Chapter4.Controllers
                 }
             };
 
-            Func<Product, bool> categoryFilter = delegate (Product prod)
-            {
-                return prod.Category == "Soccer";
-            };
-
             decimal total = 0;
-
-            foreach(Product prod in products.Filter(categoryFilter))
+            //                                      prod goeTo bool which is true if == "Soccer"
+            foreach(Product prod in products.Filter(prod => prod.Category == "Soccer"))
             {
                 total += prod.Price;
             }
