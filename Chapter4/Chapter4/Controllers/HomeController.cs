@@ -31,5 +31,19 @@ namespace Chapter4.Controllers
             return View("Result", (Object)String.Format("Product Name: {0}", productName));
 
         }
+
+        public ActionResult CreateProduct()
+        {
+            //Long Way
+            Product myProduct = new Product();
+
+            myProduct.ProductID = 100;
+            myProduct.Name = "Kayak";
+            myProduct.Description = "Boat for one person";
+            myProduct.Price = 275M;
+            myProduct.Category = "WaterSports";
+
+            return View("Result", (object)String.Format("Category: {0}", myProduct.Category));
+        }
     }
 }
