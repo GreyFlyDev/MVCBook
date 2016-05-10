@@ -11,12 +11,12 @@ namespace Chapter4.Models
                                        //this declares it is an Extension method
                                        //ShoppingCart is the class it can be applied to 
                                        //Refer to this instance using the cartParam Parameter
-        public static decimal TotalPrices(this ShoppingCart cartParam)
+        public static decimal TotalPrices(this IEnumerable<Product> productEnum)
         {
             decimal total = 0;
-                                    //get Products from ShoppiingCart.cs 
-                                    //through cartParam Variable
-            foreach(Product prod in cartParam.Products)
+            //get Products from ShoppiingCart.cs 
+            //through cartParam Variable
+            foreach (Product prod in productEnum) 
             {
                 total += prod.Price;
             }
