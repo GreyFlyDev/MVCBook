@@ -7,12 +7,12 @@ namespace Chapter4.Models
 {
     public class Product
     {
-        private string name;
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
+        //Automatic Properties
+        //Automatically sets private property to get to?
+        public int ProductID { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public string Category { set; get; }
     }
 }
