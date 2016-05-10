@@ -78,10 +78,36 @@ namespace Chapter4.Controllers
             };
 
                                 //Call TotalPrices as if it were part of ShoppingCart
-                                //Because of the Extension
             decimal cartTotal = cart.TotalPrices();
 
             return View("Result", (object)String.Format("Total: {0:c}", cartTotal));
+        }
+
+        public ViewResult UseExtensionEnumerable()
+        {
+            IEnumerable<Product> products = new ShoppingCart
+            {
+                Products = new List<Product>
+                {
+                    new Product {Name = "Kayak", Price = 275M },
+                    new Product {Name = "Life Jacket", Price = 48.95M },
+                    new Product {Name = "Soccer Ball", Price = 19.50M },
+                    new Product {Name = "Corner Flag", Price = 34.95M }
+                }
+            };
+
+            Product[] productArray =
+            {
+                    new Product {Name = "Kayak", Price = 275M },
+                    new Product {Name = "Life Jacket", Price = 48.95M },
+                    new Product {Name = "Soccer Ball", Price = 19.50M },
+                    new Product {Name = "Corner Flag", Price = 34.95M }
+            };
+
+            decimal cartTotal = products.TotalPrices();
+            decimal arrayTotal = products.TotalPrices();
+
+            return View("Result", (object)String.Format("Cart Total: {0}, Array Total: {1}", cartTotal, arrayTotal));
         }
     }
 }
